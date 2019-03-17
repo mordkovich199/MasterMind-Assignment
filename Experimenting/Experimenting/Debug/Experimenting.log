@@ -1,0 +1,4 @@
+﻿  Experimenting.cpp
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(21): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Experimenting.vcxproj -> C:\Users\Grego\Desktop\Experimenting\Debug\Experimenting.exe

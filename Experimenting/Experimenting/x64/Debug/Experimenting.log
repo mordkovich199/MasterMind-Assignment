@@ -1,0 +1,5 @@
+﻿  Experimenting.cpp
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(82): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(104): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(245): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Experimenting.vcxproj -> C:\Users\Grego\Desktop\Experimenting\x64\Debug\Experimenting.exe
