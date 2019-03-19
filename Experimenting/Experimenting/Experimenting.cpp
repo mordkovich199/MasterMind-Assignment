@@ -18,6 +18,8 @@ void inversion(std::vector <int> &parent, std::vector<int> &child);
 void createPopulation(std::vector <std::vector<int>> &population, int &size);
 int fitness(std::vector<int> &c, std::vector<std::vector<int>> &AllAttempts, std::vector<int> &Black, std::vector<int> &White);
 void crossOver(std::vector<int> &Parent1, std::vector<int> &Parent2, std::vector<int> &child1, std::vector<int> &child2);
+double SurvivalThreshold(std::map <std::vector<int>, int > &SurvivalScores);
+void NewGeneration(std::vector<std::vector<int>> &population, std::map <std::vector<int>, int > &SurvivalScores, float &threshold);
 
 struct mm_code_maker {
 
@@ -139,7 +141,8 @@ struct mm_solver {
 
 
 int main() {
-	set_random_seed();
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Testing Inversion function!!!!!!!!!!!!!!!!!!!!!!!!!///////////////
+	/*set_random_seed();
 	std::vector<std::vector<int>> population;
 	int PopulationSize = 150;
 	std::vector<int> attempt;
@@ -173,77 +176,80 @@ int main() {
 	 for (int k = 0; k < Child2.size(); k++) {
 		 std::cout << Child2[k];
 	 }
-	 
+	 */
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 	//!!!!!!!!!!!!!!!!!!!!!Testing the fitness function!!!!!!!!!!!!!!///////////
-	//int length = 4;
-	//int num = 6;
-	//set_random_seed();
-	//int PopulationSize = 150;
-	//std::vector<std::vector<int>> population;
-	//std::vector<std::vector<int>> AllAttempts;
-	//std::map <std::vector<int>, int > SurvivalScores;
-	//std::vector<int> Black;
-	//std::vector<int> White;
+	int length = 4;
+	int num = 6;
+	set_random_seed();
+	int PopulationSize = 150;
+	std::vector<std::vector<int>> population;
+	std::vector<std::vector<int>> AllAttempts;
+	std::map <std::vector<int>, int > SurvivalScores;
+	std::vector<int> Black;
+	std::vector<int> White;
 
 
-	//std::vector<int> attempt; 
-	//int black_hits = 0;
-	//int white_hits = 0;
-	//
-	////Fill in the population with random indivisduals
-	//createPopulation(population, PopulationSize);
+	std::vector<int> attempt; 
+	int black_hits = 0;
+	int white_hits = 0;
+	
+	//Fill in the population with random indivisduals
+	createPopulation(population, PopulationSize);
 
-	//std::cout << "Random Population: " << std::endl;
-	//for (int x = 0; x < population.size(); x++) {
-	//	for (int y = 0; y < length; y++) {
-	//		std::cout << population[x][y];
-	//	}
-	//	std::cout << std::endl;
-	//}
+	std::cout << "Random Population: " << std::endl;
+	for (int x = 0; x < population.size(); x++) {
+		for (int y = 0; y < length; y++) {
+			std::cout << population[x][y];
+		}
+		std::cout << std::endl;
+	}
 
-	//mm_code_maker maker;
-	//maker.init(length, num);
-	////Pretend this is our code word
-	//maker.sequence = {4, 5, 6, 6};
+	mm_code_maker maker;
+	maker.init(length, num);
+	//Pretend this is our code word
+	maker.sequence = {4, 5, 6, 6};
 
-	//
-	//attempt = population[randn(PopulationSize) - 1];
-	//maker.give_feedback(attempt, black_hits, white_hits);
-	//AllAttempts.push_back(attempt);
-	//Black.push_back(black_hits);
-	//White.push_back(white_hits);
-	//black_hits = 0;
-	//white_hits = 0;
-	////What's the point, it will receive a reasonable survival score number - no problem
-	///*population.erase(std::find(population.begin(), population.end(), attempt));*/
+	
+	attempt = population[randn(PopulationSize) - 1];
+	maker.give_feedback(attempt, black_hits, white_hits);
+	AllAttempts.push_back(attempt);
+	Black.push_back(black_hits);
+	White.push_back(white_hits);
+	black_hits = 0;
+	white_hits = 0;
+	//What's the point, it will receive a reasonable survival score number - no problem
+	/*population.erase(std::find(population.begin(), population.end(), attempt));*/
 
-	//std::cout << "Attempt: " << std::endl;
+	std::cout << "Attempt: " << std::endl;
 
-	//for (int k = 0; k < attempt.size(); k++) {
-	//	std::cout << attempt[k];
-	//}
-	//std::cout << std::endl;
+	for (int k = 0; k < attempt.size(); k++) {
+		std::cout << attempt[k];
+	}
+	std::cout << std::endl;
 
-	//attempt.clear();
-	//
-	//std::vector<int> member;
-	//int memeberScore;
+	attempt.clear();
+	
+	std::vector<int> member;
+	int memeberScore;
 
-	//for (int i = 0; i < population.size(); i++) {
-	//	member = population[i];
-	//	memeberScore = fitness(member, AllAttempts, Black, White);
-	//	SurvivalScores.insert(std::pair<std::vector<int>, int>(member, memeberScore));
-	//}
-	//std::cout << "Member: " << "Score:" << std::endl;
-	//
-	//for (auto x : SurvivalScores) {
-	//	for (int k = 0; k < x.first.size(); k++) {
-	//		std::cout << x.first[k];
-	//	}
-	//	std::cout << " " << x.second << std::endl;
-	//}
+	for (int i = 0; i < population.size(); i++) {
+		member = population[i];
+		memeberScore = fitness(member, AllAttempts, Black, White);
+		SurvivalScores.insert(std::pair<std::vector<int>, int>(member, memeberScore));
+	}
+	std::cout << "Member: " << "Score:" << std::endl;
+	
+	for (auto x : SurvivalScores) {
+		/*for (int k = 0; k < x.first.size(); k++) {
+			std::cout << x.first[k];
+		}*/
+		std::cout << " " << x.second << std::endl;
+	}
+
+	std::cout << "Surival Threshold would be: " << SurvivalThreshold(SurvivalScores) << std::endl;
 
 	////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!///////////
 
@@ -542,7 +548,8 @@ int fitness(std::vector<int> &c, std::vector<std::vector<int>> &AllAttempts, std
 		demo.give_feedback(c, b, w);
 
 		LeftSum += const_a * abs(b - Black[i - 1]);
-		RightSum += abs(w - White[i - 1]) + (const_b * num * (i - 1));
+		/*RightSum += abs(w - White[i - 1]) + (const_b * num * (i - 1));*/
+		RightSum += const_b * abs(w - White[i - 1]); //Modification from Jaffar.
 		b = 0;
 		w = 0;
 	}
@@ -551,8 +558,14 @@ int fitness(std::vector<int> &c, std::vector<std::vector<int>> &AllAttempts, std
 	return result;
 }
 
-//Should make use of mutation, permutation and inversion function and of corse cossover 
-void NewGeneration() {
+//Should make use of all modification functions. Note: crossover should always happen, whereas other changes with a certain probability.
+//I am going to the set roughly equal probability of mutation, permutation or inversion occuring.
+void NewGeneration(std::vector<std::vector<int>> &population, std::map <std::vector<int>, int > &SurvivalScores, float &threshold) {
+
+
+
+
+
 
 
 
@@ -578,6 +591,74 @@ void crossOver(std::vector<int> &Parent1, std::vector<int> &Parent2, std::vector
 		child2.push_back(Parent1[j]);
 	}
 }
+
+//Calculating mean value of fitness.
+double SurvivalThreshold(std::map <std::vector<int>, int > &SurvivalScores) {
+	float ScoreSum = 0;
+	float result;
+	for (auto x : SurvivalScores) {
+		ScoreSum += x.second;
+	}
+
+	//This bit is to properly round up the result to 1d.p. Imagine you do Int's and you get 1, whereas the actual value might be 1.7
+	//All 1's are going to survive, while the threshold is almost nearing 2!!, doesn't make sense, right?
+	result = ScoreSum / SurvivalScores.size();
+
+	char str[40];
+	sprintf_s(str, "%.1f", result);
+	sscanf_s(str, "%f", &result);
+
+	return result;	
+}
+
+void EliminateUnderperformant(std::vector<std::vector<int>> &population, std::map <std::vector<int>, int > &SurvivalScores, float &threshold) {
+	for (int i = 0; i < population.size(); i++) {
+		if (SurvivalScores[population[i]] < threshold) {
+			population.erase(std::find(population.begin(), population.end(), population[i]));
+		}
+	}
+}
+
+//This function without variation will produce some guess, thus it makes no point to break it down into smaller tasks.
+//Note: our population vector here is already a newly created generation.
+void NextGuess(std::map <std::vector<int>, int > &SurvivalScores, std::vector<std::vector<int>> &population, std::vector<int> &Guess) {
+	
+	//This is the set of the strongest codes, based on fitness, in the new generation, from which our next guess will be chosen.
+	//It might be any size, though at least one code to produce the guess.
+	std::vector<std::vector<int>> SetOfEligible;
+
+	//finding the maximum score
+
+	std::vector<int> ScoreList;
+
+	//fill in the scorelist with all scores
+	for (auto x : SurvivalScores) {
+	ScoreList.push_back(x.second);
+	}
+
+	//find the biggest score (don't care about duplicates now);
+	int max = ScoreList[0];
+	int next;
+	for (int k = 0; k < ScoreList.size(); k++) {
+		next = ScoreList[k + 1];
+		if (next > max) {
+			max = next;
+		}
+	}
+
+	//Adding all eligible codes to the eligible set
+	for (auto x : SurvivalScores) {
+		if (x.second = max) {
+			SetOfEligible.push_back(x.first);
+		}
+	}
+ 
+
+	//Choosing at random one of the eligible ones
+	int EligiblePosition = randn(SetOfEligible.size()) - 1;
+	Guess = SetOfEligible[EligiblePosition];
+}
+
 
 
 
