@@ -1,8 +1,12 @@
 ﻿  Experimenting.cpp
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(87): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(101): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(416): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(518): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(519): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(579): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(75): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(89): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(131): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(217): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(218): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(271): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(272): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(277): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(374): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(476): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Experimenting.vcxproj -> C:\Users\Grego\Desktop\Experimenting\x64\Debug\Experimenting.exe

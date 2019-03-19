@@ -112,7 +112,10 @@ struct mm_solver {
 			w = 0;
 		}
 	}
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 
+
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Functions for the genetic algorithm (higher order)!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 	void EliminateUnderperformant(std::vector <std::vector<int>> &population, std::map <std::vector<int>, int > &SurvivalScores, float &threshold) {
 		for (int i = 0; i < population.size(); i++) {
 			if (SurvivalScores[population[i]] < threshold) {
@@ -141,16 +144,12 @@ struct mm_solver {
 	}
 
 	void mutation(std::vector<int> &child) {
-		int length = 4;
-		int num = 6;
 		int chooseRandomPos = randn(length) - 1;
 		child[chooseRandomPos] = randn(num);
 	}
 
 	void permutation(std::vector<int> &child) {
 		int a;
-		int length = 4;
-		int num = 6;
 		int chooseRandomPos1 = randn(length) - 1;
 		int	chooseRandomPos2 = randn(length) - 1;
 
@@ -167,8 +166,6 @@ struct mm_solver {
 
 	void inversion(std::vector<int> &child) {
 		int a;
-		int length = 4;
-		int num = 6;
 		int chooseRandomPos1 = randn(length) - 1;
 		int	chooseRandomPos2 = randn(length) - 1;
 
@@ -205,10 +202,7 @@ struct mm_solver {
 	}
 
 	void createPopulation(std::vector <std::vector<int>> &population, int &size) {
-		int length = 4;
-		int num = 6;
 		std::vector<int> single;
-
 		int q;
 		int x;
 
@@ -225,9 +219,6 @@ struct mm_solver {
 				single[k] = ((x / q) % num) + 1;
 			}
 			population.push_back(single);
-
-
-
 		}
 	}
 
@@ -238,11 +229,9 @@ struct mm_solver {
 		mm_code_maker demo;
 		int b = 0;
 		int w = 0;
+		//Can play around with these constants for better optimization.
 		int const_a = 1, const_b = 2;
-		//temporary variables - not go in the final version, because in the class already
-		int length = 4;
-		int num = 6;
-		//
+		
 		demo.init(length, num);
 
 		//Right and the left part in one loop
@@ -263,8 +252,8 @@ struct mm_solver {
 		return result;
 	}
 
-//Note: crossover should always happen, whereas other changes with a certain probability.
-//I am going to the set equal probability of mutation, permutation or inversion occuring.
+	//Note: crossover should always happen, whereas other changes with a certain probability.
+	//I am going to the set equal probability of mutation, permutation or inversion occuring.
 	void NewGeneration(std::vector<std::vector<int>> &population, std::map <std::vector<int>, int > &SurvivalScores, float &threshold) {
 		//To be deleted later on
 		int PopulationSize = 150;
@@ -346,16 +335,15 @@ struct mm_solver {
 		return result;
 	}
 
-//This function without variation will produce some guess, thus it makes no point to break it down into smaller tasks.
-//Note: our population vector here is already a newly created generation.
+	//This function without variation will produce some guess, thus it makes no point to break it down into smaller tasks.
+	//Note: our population vector here is already a newly created generation.
 	void NextGuess(std::map <std::vector<int>, int > &SurvivalScores, std::vector<std::vector<int>> &population, std::vector<int> &Guess) {
 
 		//This is the set of the strongest codes, based on fitness, in the new generation, from which our next guess will be chosen.
 		//It might be any size, though at least one code to produce the guess.
 		std::vector<std::vector<int>> SetOfEligible;
 
-		//finding the maximum score
-
+		//////finding the maximum score//////
 		std::vector<int> ScoreList;
 
 		//fill in the scorelist with all scores
@@ -372,6 +360,7 @@ struct mm_solver {
 				max = next;
 			}
 		}
+		/////////////////////////////////////
 
 		//Adding all eligible codes to the eligible set
 		for (auto x : SurvivalScores) {
@@ -386,19 +375,98 @@ struct mm_solver {
 		Guess = SetOfEligible[EligiblePosition];
 	}
 
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
 
-
-	 
 	int length;
 	int num;
 
 };
 
+
 //Main decides whether to go into the long algorithm mode or short one. Based on this decission, all necessary variables specific to
 //short or long algorithm are declared and used. Think of the solver as sort of your cards on hand and main as the player that plays
 //these.
 int main() {
-	//Write from scratch.
+	std::vector<int> attempt;
+	std::vector<std::vector<int>> S;
+
+	set_random_seed();
+
+	int length, num;
+	std::cout << "enter length of sequence and number of possible values:" << std::endl;
+	std::cin >> length >> num;
+	
+	mm_solver solver;
+	solver.init(length, num);
+	solver.generate(S);
+	std::cout << "S: " << std::endl;
+	for (int i = 0; i < S.size(); i++) {
+		for (int k = 0; k < solver.length; k++) {
+			std::cout << S[i][k];
+		}
+		std::cout << std::endl;
+	}
+
+	mm_code_maker maker;
+	maker.init(length, num);
+	maker.generate_sequence();
+
+	std::cout << "the code is: ";
+
+	for (int i = 0; i < maker.sequence.size(); i++) {
+		std::cout << maker.sequence[i] << " ";
+	}
+
+	std::cout << std::endl;
+
+	int black_hits = 0, white_hits = 0;
+	int attempts_limit = 5000;
+	int attempts = 0;
+	while ((black_hits < length) && (attempts < attempts_limit)) {
+		black_hits = 0;
+		white_hits = 0;
+
+		//Initial guess according to Knuth.
+		if (attempts == 0) {
+			attempt = { 1, 1, 2, 2 };
+		}
+		else {
+			solver.create_attempt(attempt, S);
+		}
+
+		maker.give_feedback(attempt, black_hits, white_hits);
+		std::cout << "attempt: " << std::endl;
+		for (int i = 0; i < attempt.size(); i++) {
+			std::cout << attempt[i] << " ";
+		}
+		std::cout << std::endl;
+		std::cout << "black pegs: " << black_hits << " " << " white pegs: " << white_hits << std::endl;
+
+		solver.learn(attempt, black_hits, white_hits, S);
+		std::cout << "S: " << std::endl;
+		for (int i = 0; i < S.size(); i++) {
+			for (int k = 0; k < solver.length; k++) {
+				std::cout << S[i][k];
+			}
+			std::cout << std::endl;
+
+		}
+		attempt.clear();
+		attempts++;
+	}
+
+	if (black_hits == length) {
+		std::cout << "the solver has found the sequence in " << attempts << " attempts" << std::endl;
+	}
+	else {
+		std::cout << "after " << attempts << " attempts still no solution" << std::endl;
+	}
+	std::cout << "the sequence generated by the code maker was:" << std::endl;
+	for (int i = 0; i < maker.sequence.size(); i++) {
+		std::cout << maker.sequence[i] << " ";
+	}
+	std::cout << std::endl;
+
 	return 0;
 }
 
