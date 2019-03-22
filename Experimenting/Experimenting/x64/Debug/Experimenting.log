@@ -1,12 +1,101 @@
 ﻿  Experimenting.cpp
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(75): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(89): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(131): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(217): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(218): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(271): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(272): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(277): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(374): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(476): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(76): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(90): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(134): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(136): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(282): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(302): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(303): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(308): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(383): warning C4244: 'argument': conversion from '_Ty2' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty2=float
+          ]
+          and
+          [
+              _Ty=int
+          ]
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(406): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(464): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(609): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\utility(240): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+          and
+          [
+              _Ty2=float
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xmemory0(879): note: see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<std::vector<int,std::allocator<int>>,int,0>(std::pair<std::vector<int,std::allocator<int>>,int> &&) noexcept' being compiled
+          with
+          [
+              _Kty=std::vector<int,std::allocator<int>>,
+              _Ty=float
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xmemory0(881): note: see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<std::vector<int,std::allocator<int>>,int,0>(std::pair<std::vector<int,std::allocator<int>>,int> &&) noexcept' being compiled
+          with
+          [
+              _Kty=std::vector<int,std::allocator<int>>,
+              _Ty=float
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xtree(976): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,std::pair<std::vector<int,std::allocator<int>>,int>>(_Alloc &,_Objty *const ,std::pair<std::vector<int,std::allocator<int>>,int> &&)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::_Tree_node<std::pair<const std::vector<int,std::allocator<int>>,float>,std::_Default_allocator_traits<std::allocator<std::pair<const std::vector<int,std::allocator<int>>,float>>>::void_pointer>>,
+              _Ty=std::pair<const std::vector<int,std::allocator<int>>,float>,
+              _Objty=std::pair<const std::vector<int,std::allocator<int>>,float>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xtree(983): note: see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,std::pair<std::vector<int,std::allocator<int>>,int>>(_Alloc &,_Objty *const ,std::pair<std::vector<int,std::allocator<int>>,int> &&)' being compiled
+          with
+          [
+              _Alloc=std::allocator<std::_Tree_node<std::pair<const std::vector<int,std::allocator<int>>,float>,std::_Default_allocator_traits<std::allocator<std::pair<const std::vector<int,std::allocator<int>>,float>>>::void_pointer>>,
+              _Ty=std::pair<const std::vector<int,std::allocator<int>>,float>,
+              _Objty=std::pair<const std::vector<int,std::allocator<int>>,float>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xtree(1154): note: see reference to function template instantiation 'std::_Tree_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *std::_Tree_comp_alloc<_Traits>::_Buynode<std::pair<std::vector<int,std::allocator<int>>,int>>(std::pair<std::vector<int,std::allocator<int>>,int> &&)' being compiled
+          with
+          [
+              _Ty=std::pair<const std::vector<int,std::allocator<int>>,float>,
+              _Alloc=std::allocator<std::pair<const std::vector<int,std::allocator<int>>,float>>,
+              _Traits=std::_Tmap_traits<std::vector<int,std::allocator<int>>,float,std::less<std::vector<int,std::allocator<int>>>,std::allocator<std::pair<const std::vector<int,std::allocator<int>>,float>>,false>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xtree(1155): note: see reference to function template instantiation 'std::_Tree_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer> *std::_Tree_comp_alloc<_Traits>::_Buynode<std::pair<std::vector<int,std::allocator<int>>,int>>(std::pair<std::vector<int,std::allocator<int>>,int> &&)' being compiled
+          with
+          [
+              _Ty=std::pair<const std::vector<int,std::allocator<int>>,float>,
+              _Alloc=std::allocator<std::pair<const std::vector<int,std::allocator<int>>,float>>,
+              _Traits=std::_Tmap_traits<std::vector<int,std::allocator<int>>,float,std::less<std::vector<int,std::allocator<int>>>,std::allocator<std::pair<const std::vector<int,std::allocator<int>>,float>>,false>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\map(213): note: see reference to function template instantiation 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<_Ty>>>,bool> std::_Tree<std::_Tmap_traits<_Kty,float,_Pr,_Alloc,false>>::emplace<std::pair<std::vector<int,std::allocator<int>>,int>>(std::pair<std::vector<int,std::allocator<int>>,int> &&)' being compiled
+          with
+          [
+              _Ty=std::pair<const std::vector<int,std::allocator<int>>,float>,
+              _Kty=std::vector<int,std::allocator<int>>,
+              _Pr=std::less<std::vector<int,std::allocator<int>>>,
+              _Alloc=std::allocator<std::pair<const std::vector<int,std::allocator<int>>,float>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\map(213): note: see reference to function template instantiation 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<_Ty>>>,bool> std::_Tree<std::_Tmap_traits<_Kty,float,_Pr,_Alloc,false>>::emplace<std::pair<std::vector<int,std::allocator<int>>,int>>(std::pair<std::vector<int,std::allocator<int>>,int> &&)' being compiled
+          with
+          [
+              _Ty=std::pair<const std::vector<int,std::allocator<int>>,float>,
+              _Kty=std::vector<int,std::allocator<int>>,
+              _Pr=std::less<std::vector<int,std::allocator<int>>>,
+              _Alloc=std::allocator<std::pair<const std::vector<int,std::allocator<int>>,float>>
+          ]
+  c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(283): note: see reference to function template instantiation 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<_Ty>>>,bool> std::map<std::vector<int,std::allocator<int>>,float,std::less<_Kty>,std::allocator<_Ty>>::insert<std::pair<std::vector<int,std::allocator<int>>,int>,void>(_Valty &&)' being compiled
+          with
+          [
+              _Ty=std::pair<const std::vector<int,std::allocator<int>>,float>,
+              _Kty=std::vector<int,std::allocator<int>>,
+              _Valty=std::pair<std::vector<int,std::allocator<int>>,int>
+          ]
+  c:\users\grego\desktop\experimenting\experimenting\experimenting.cpp(283): note: see reference to function template instantiation 'std::pair<std::_Tree_iterator<std::_Tree_val<std::_Tree_simple_types<_Ty>>>,bool> std::map<std::vector<int,std::allocator<int>>,float,std::less<_Kty>,std::allocator<_Ty>>::insert<std::pair<std::vector<int,std::allocator<int>>,int>,void>(_Valty &&)' being compiled
+          with
+          [
+              _Ty=std::pair<const std::vector<int,std::allocator<int>>,float>,
+              _Kty=std::vector<int,std::allocator<int>>,
+              _Valty=std::pair<std::vector<int,std::allocator<int>>,int>
+          ]
   Experimenting.vcxproj -> C:\Users\Grego\Desktop\Experimenting\x64\Debug\Experimenting.exe
